@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Noto Sans TC", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Noto Serif TC", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-ink-950: #060a13;
+  --color-ink-900: #0a1020;
+  --color-ink-850: #0d1526;
+  --color-ink-800: #111a30;
+  --color-ink-700: #1a2542;
+
+  --color-coal: #fb923c;
+  --color-gas: #22d3ee;
+  --color-oil: #a8a29e;
+  --color-nuclear: #c084fc;
+  --color-hydro: #60a5fa;
+  --color-wind: #34d399;
+  --color-solar: #facc15;
+  --color-geo: #f87171;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #060a13;
+  color: #e2e8f0;
+  font-family: "Noto Sans TC", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.35);
+  color: #f8fafc;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #060a13;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* ---- utilities ---- */
+.noise-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.text-outline {
+  -webkit-text-stroke: 1px rgba(226, 232, 240, 0.22);
+  color: transparent;
+}
+
+.glow-dot {
+  box-shadow: 0 0 12px 2px currentColor;
+}
+
+/* ---- keyframes ---- */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.55);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+.marker-ring {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: pulse-ring 2.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee-x 46s linear infinite;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+.animate-drift {
+  animation: drift 7s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin-slow 26s linear infinite;
+}
+
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -48;
+  }
+}
+.flow-line {
+  stroke-dasharray: 4 8;
+  animation: dash-flow 2.4s linear infinite;
+}
+
+@keyframes blink-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+.animate-blink {
+  animation: blink-soft 2.2s ease-in-out infinite;
+}
